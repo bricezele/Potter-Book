@@ -1,4 +1,5 @@
 export type Book = {
-    key: string
+    key: number
+    title: string
     uri: string
 }

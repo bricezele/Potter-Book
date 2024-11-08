@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View, Image} from "react-native";
+import {StyleSheet, View, Image, Text} from "react-native";
 import { Book } from "../domain/model/Book";
 import { Stagger } from "./Stagger";
 import { FadeOutDown, ZoomInEasyDown } from "react-native-reanimated";
@@ -11,7 +11,7 @@ type StaggerBookProps = {
 const StaggerBook: React.FC<StaggerBookProps> = ({books}) => {
     return (
         <>
-            {books.length > 0 && (
+            {books.length > 0 ? (
                 <Stagger
                     stagger={50}
                     duration={300}
@@ -22,10 +22,13 @@ const StaggerBook: React.FC<StaggerBookProps> = ({books}) => {
                 >
                     {books.map((item, index) => (
                         <View key={index} style={styles.itemStagger}>
-                            <Image source={{uri: item.uri}} style={StyleSheet.absoluteFillObject} />
+                            <Image source={{uri: item.uri}} style={styles.image} />
+                            <Text>{item.title}</Text>
                         </View>
                     ))}
                 </Stagger>
+            ): (
+                <Text style={styles.text}>Aucun livre sélectionné</Text>
             )}
         </>
     )
@@ -39,12 +42,20 @@ const styles = StyleSheet.create({
     },
     itemStagger: {
         width: 100,
+        height: 120,
         aspectRatio: 1,
-        borderRadius: 16,
-        overflow: 'hidden',
-        marginVertical: 10,
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'column',
+        rowGap: 10
+    },
+    image: {
+        width: 100, 
+        height: 100,
+        borderRadius: 16,
+    },
+    text: {
+        textAlign: 'center',
     }
 })
 
