@@ -8,11 +8,10 @@ import BookCard from "./BookCard"
 
 type BookWheelProps = {
     books: Book[]
-    onChange: (index: number) => void
     onSelect: (index: number) => void
 }
 
-const BookWheel: React.FC<BookWheelProps> = ({ books, onChange, onSelect }) => {
+const BookWheel: React.FC<BookWheelProps> = ({ books, onSelect }) => {
     const distance = useSharedValue(0)
     const angle = useDerivedValue(() => {
         return distance.value / CIRCLE_CIRCUMFERENCE
@@ -49,14 +48,13 @@ const BookWheel: React.FC<BookWheelProps> = ({ books, onChange, onSelect }) => {
                 const newAngle = -activeIndex.value * THETA
                 distance.value = newAngleFloat * CIRCLE_CIRCUMFERENCE
                 distance.value = withSpring(newAngle * CIRCLE_CIRCUMFERENCE)
-                runOnJS(onChange)(activeIndex.value)
             })
         })
     return (
         <GestureDetector gesture={pan}>
             <Animated.View style={[styles.container, animatedStyle]}>
                 {books.map((book, index) => (
-                    <BookCard key={index} book={book} bookCardIndex={index} onSelect={()=> onSelect(index)} index={interpolatedIndex} />
+                    <BookCard key={index} book={book} bookCardIndex={index} onSelect={()=>{ onSelect(index); console.log(index)}} index={interpolatedIndex} />
                 ))}
             </Animated.View>
         </GestureDetector>

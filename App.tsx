@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BookWheel from './components/BookWheel';
 import { BOOKS } from './constants';
+import Root from './components/Root';
 
 export default function App() {
   return (
@@ -11,10 +12,7 @@ export default function App() {
     >
       <GestureHandlerRootView>
         <StatusBar style="auto" />
-        <BookWheel books={BOOKS}  
-                   onChange={(index) => console.log(index)} 
-                   onSelect={(index) => console.log(index)} 
-        />
+        <Root />
       </GestureHandlerRootView>
     </SafeAreaView>
   );
