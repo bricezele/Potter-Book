@@ -39,9 +39,9 @@ const Root: React.FC = () => {
                                 <>
                                     <Text key={index} style={styles.description}>Set {index + 1} : ({set.map(() => BOOK_PRICE ).join(' + ')}) * {PROMO[set.length]}</Text>
                                     <Text style={[styles.title]}>{index < bestSet.length - 1 ? '+' : '=' }</Text>
-                                    <Text style={styles.title}>{price}</Text>
                                 </>
                             ))}
+                            <Text style={styles.title}>{price}</Text>
                         </Animated.View>
                     </View>
                 </Overlay>
