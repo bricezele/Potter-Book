@@ -1,12 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import BookWheel from './components/BookWheel';
+import { BOOKS } from './constants';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView
+      style={styles.container}
+    >
+      <GestureHandlerRootView>
+        <StatusBar style="auto" />
+        <BookWheel books={BOOKS}  
+                   onChange={(index) => console.log(index)} 
+                   onSelect={(index) => console.log(index)} 
+        />
+      </GestureHandlerRootView>
+    </SafeAreaView>
   );
 }
 
@@ -16,5 +26,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 12
   },
 });
