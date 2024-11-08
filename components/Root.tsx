@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import { BOOKS } from '../constants';
 import { Book } from '../domain/model/Book';
 import BookWheel from './BookWheel';
@@ -16,9 +16,16 @@ const Root: React.FC = () => {
                     onSelect={(index) => setSelectedBooks(books => [...books, BOOKS[index]])} 
             />
             <View style={styles.textContainer}>
-                <Blink duration={1500}>
-                    <Text style={styles.text}>Glisser et cliquer pour sélectionner</Text>
-                </Blink>
+                {selectedBooks.length === 0 ? (
+                    <Blink duration={1500}>
+                            <Text style={styles.text}>Glisser et cliquer pour sélectionner</Text>
+                    </Blink>
+                ) : (
+                    <Button title="Calculer le prix total" onPress={() => {
+
+                    }} />
+                )
+                }
             </View>
         </View>
     )
