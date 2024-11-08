@@ -3,23 +3,20 @@ import React, { useState } from 'react'
 import { Modal, StyleSheet, TouchableOpacity, View, Text } from 'react-native'
 
 type OverlayProps = {
-    show?: boolean
+    onClose: () => void
 }
-
 const Overlay: React.FC<PropsWithChildren<OverlayProps>> = ({
     children,
-    show = false
+    onClose
 }): JSX.Element => {
-    const [showOverlay, setShowOverlay] = useState(show)
-
     return (
-        <Modal transparent visible={showOverlay} animationType="fade">
+        <Modal transparent visible animationType="fade">
             <View  style={[styles.modalStyles, styles.container]}>
                 <View style={styles.container}>
                         <View style={styles.closeButtonContainer}>
                             <TouchableOpacity style={styles.closeButton}
-                                onPress={() => setShowOverlay(show => !show)}>
-                                <Text style={{ color: 'white', fontSize: 20 }}>X</Text>
+                                onPress={() => onClose()}>
+                                <Text style={{ color: 'white', fontSize: 30 }}>X</Text>
                             </TouchableOpacity>
                         </View>
                     <View style={[styles.centered, styles.container]}>
@@ -39,7 +36,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     closeButtonContainer: {
-        paddingLeft: 20
+        marginTop: 50,
+        marginLeft: 50,
+        width: 30,
+        height: 40,
     },
     closeButton: {
         alignItems: 'center',
