@@ -26,6 +26,7 @@ export const PROMO = {
     4: 0.80,
     5: 0.75
 }
+
 export const BOOKS: Book[] = [
     { key: 1, uri: "https://i.pinimg.com/originals/a1/f8/87/a1f88733921c820db477d054fe96afbb.jpg", title: "Livre 1" },
     { key: 2, uri: "https://bukovero.com/wp-content/uploads/2016/07/Harry_Potter_and_the_Cursed_Child_Special_Rehearsal_Edition_Book_Cover.jpg", title: "Livre 2" },
